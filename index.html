@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dr. Natalie C. Evans | Career Suite</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="app">
+
+  <!-- ══ SIDEBAR ══ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sb-top">
+      <div class="sb-avatar">NCE</div>
+      <div class="sb-name">Dr. Natalie C. Evans</div>
+      <div class="sb-creds">DHA · MPH · Dallas, TX</div>
+    </div>
+    <nav class="sb-nav">
+      <div class="nav-lbl">Overview</div>
+      <button class="nav-btn active" id="nb-home" onclick="navTo('home')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Dashboard</span>
+      </button>
+      <div class="nav-lbl">Career</div>
+      <button class="nav-btn" id="nb-jobs" onclick="navTo('jobs')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span>Opportunities</span>
+        <em id="jobs-pill">8</em>
+      </button>
+      <button class="nav-btn" id="nb-tracker" onclick="navTo('tracker')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <span>Tracker</span>
+        <em class="red" id="apps-pill" style="display:none">0</em>
+      </button>
+      <div class="nav-lbl">Prepare</div>
+      <button class="nav-btn" id="nb-prep" onclick="navTo('prep')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        <span>Interview Prep</span>
+      </button>
+      <button class="nav-btn" id="nb-growth" onclick="navTo('growth')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        <span>Career Growth</span>
+      </button>
+      <button class="nav-btn" id="nb-linkedin" onclick="navTo('linkedin')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        <span>LinkedIn</span>
+      </button>
+    </nav>
+    <div class="sb-bottom">
+      <div class="refresh-note" id="refresh-note">↻ Jobs refresh weekly</div>
+      <button class="dl-btn" onclick="dlResume()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Resume
+      </button>
+    </div>
+  </aside>
+
+  <!-- ══ MAIN ══ -->
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="hamburger" onclick="toggleSidebar()">
+          <span></span><span></span><span></span>
+        </button>
+        <h1 class="page-title" id="page-title">Dashboard</h1>
+      </div>
+      <div class="topbar-right">
+        <div class="topstat"><span id="ts-applied">0</span> applied</div>
+        <div class="topstat"><span id="ts-interviews">0</span> interviews</div>
+        <div class="topstat accent">16+ yrs exp</div>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <!-- HOME -->
+      <section id="v-home" class="view active">
+        <div class="hero">
+          <div class="hero-orb"></div>
+          <div class="hero-label">A note for Dr. Natalie</div>
+          <p class="hero-quote">"You bring something rare to this field — the depth of a researcher, the heart of a practitioner, and the vision of a leader."</p>
+        </div>
+
+        <!-- 90-DAY TRACKER -->
+        <div class="day90-wrap" id="day90-wrap">
+
+          <!-- NOT STARTED STATE -->
+          <div id="day90-start" class="day90-start">
+            <div class="day90-start-left">
+              <div class="day90-start-title">Ready to begin your 90-day search?</div>
+              <div class="day90-start-sub">Start the clock and the dashboard will track your daily progress, show your phase milestones, and keep you on pace through Day 90.</div>
+            </div>
+            <button class="day90-btn-start" onclick="startSearch()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Begin My 90-Day Search
+            </button>
+          </div>
+
+          <!-- ACTIVE STATE -->
+          <div id="day90-active" style="display:none">
+            <div class="day90-header">
+              <div class="day90-header-left">
+                <div class="day90-day" id="d90-day">Day 1</div>
+                <div class="day90-phase" id="d90-phase">Phase 1 — Foundation</div>
+              </div>
+              <div class="day90-header-right">
+                <div class="day90-remaining" id="d90-remaining">89 days remaining</div>
+                <div class="day90-started" id="d90-started"></div>
+              </div>
+            </div>
+            <div class="day90-bar-wrap">
+              <div class="day90-bar">
+                <div class="day90-fill" id="d90-fill" style="width:0%"></div>
+                <div class="day90-marker" style="left:33.3%"><span>Day 30</span></div>
+                <div class="day90-marker" style="left:66.6%"><span>Day 60</span></div>
+                <div class="day90-marker" style="left:100%;transform:translateX(-100%)"><span>Day 90</span></div>
+              </div>
+            </div>
+            <div class="day90-phases">
+              <div class="day90-phase-block" id="d90-p1">
+                <div class="d90-phase-dot" id="d90-p1-dot"></div>
+                <div class="d90-phase-label">Days 1–30</div>
+                <div class="d90-phase-name">Foundation</div>
+                <div class="d90-phase-focus">LinkedIn · Resume · First applications</div>
+              </div>
+              <div class="day90-phase-block" id="d90-p2">
+                <div class="d90-phase-dot" id="d90-p2-dot"></div>
+                <div class="d90-phase-label">Days 31–60</div>
+                <div class="d90-phase-name">Momentum</div>
+                <div class="d90-phase-focus">Networking · Screens · Outreach</div>
+              </div>
+              <div class="day90-phase-block" id="d90-p3">
+                <div class="d90-phase-dot" id="d90-p3-dot"></div>
+                <div class="d90-phase-label">Days 61–90</div>
+                <div class="d90-phase-name">Accelerate</div>
+                <div class="d90-phase-focus">Interviews · Negotiate · Decide</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="kpi-row">
+          <div class="kpi-card clickable" onclick="navTo('tracker')">
+            <div class="kn" id="kpi-a">0</div>
+            <div class="kl">Applications</div>
+            <div class="kh">view tracker →</div>
+          </div>
+          <div class="kpi-card clickable" onclick="navTo('tracker')">
+            <div class="kn" id="kpi-i">0</div>
+            <div class="kl">Interviews</div>
+            <div class="kh">update status →</div>
+          </div>
+          <div class="kpi-card shine">
+            <div class="kn">$2M+</div>
+            <div class="kl">Grants Led</div>
+            <div class="kh">CDC · HRSA · SAMHSA</div>
+          </div>
+          <div class="kpi-card shine">
+            <div class="kn">16+</div>
+            <div class="kl">Years Exp.</div>
+            <div class="kh">Public health leader</div>
+          </div>
+        </div>
+        <div class="home-cols">
+          <div class="glass-card">
+            <div class="gc-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c0526a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              Quick Actions
+            </div>
+            <button class="action-row" onclick="navTo('jobs')">
+              <span class="ar-icon jobs"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+              <div class="ar-text"><div class="ar-title">Browse Opportunities</div><div class="ar-sub">8 curated roles this week</div></div>
+              <span class="ar-arrow">→</span>
+            </button>
+            <button class="action-row" onclick="navTo('prep')">
+              <span class="ar-icon prep"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
+              <div class="ar-text"><div class="ar-title">Interview Prep</div><div class="ar-sub">Questions &amp; coaching</div></div>
+              <span class="ar-arrow">→</span>
+            </button>
+            <button class="action-row" onclick="navTo('growth')">
+              <span class="ar-icon growth"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg></span>
+              <div class="ar-text"><div class="ar-title">Career Roadmap</div><div class="ar-sub">Your 5-year plan</div></div>
+              <span class="ar-arrow">→</span>
+            </button>
+            <button class="action-row" onclick="dlResume()">
+              <span class="ar-icon resume"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+              <div class="ar-text"><div class="ar-title">Updated Resume</div><div class="ar-sub">PM &amp; Consulting edition</div></div>
+              <span class="ar-arrow gold">↓</span>
+            </button>
+          </div>
+          <div class="glass-card">
+            <div class="gc-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c0526a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Your Superpowers
+            </div>
+            <div class="str-item"><div class="s-dot rose"></div><div><div class="s-name">Federal Grant Management</div><div class="s-detail">CDC · HRSA · SAMHSA · Gilead · $2M+ portfolio</div></div></div>
+            <div class="str-item"><div class="s-dot rose"></div><div><div class="s-name">Data Systems Architecture</div><div class="s-detail">10 grants · 8 databases · zero audit findings</div></div></div>
+            <div class="str-item"><div class="s-dot gold"></div><div><div class="s-name">Implementation Science (DHA)</div><div class="s-detail">Oklahoma State · Dec 2025 · CIRA Yale Affiliate</div></div></div>
+            <div class="str-item"><div class="s-dot gold"></div><div><div class="s-name">Contractor Oversight &amp; QI</div><div class="s-detail">7 contractors · $200K budgets · Corrective action</div></div></div>
+            <div class="str-item"><div class="s-dot mauve"></div><div><div class="s-name">Statewide Health Initiatives</div><div class="s-detail">Louisiana EHE · 2 CDC Phase One jurisdictions</div></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- JOBS -->
+      <section id="v-jobs" class="view">
+        <div class="sec-hdr">
+          <div><h2 class="sec-title">Opportunities</h2><p class="sec-sub">Curated roles for Dr. Evans — auto-refreshes every 7 days</p></div>
+          <span class="week-chip" id="week-chip">Loading...</span>
+        </div>
+        <p class="nxt-note" id="nxt-note"></p>
+
+        <!-- JOB BOARD SEARCH LINKS — verified URL patterns Apr 2026 -->
+        <div style="background:#ffffff;border:1px solid rgba(192,82,106,0.15);border-radius:15px;padding:17px;margin-bottom:16px;box-shadow:0 2px 12px rgba(192,82,106,0.08)">
+          <div style="font-size:11px;font-weight:600;color:#1a0e14;text-transform:uppercase;letter-spacing:0.07em;display:flex;align-items:center;gap:8px;margin-bottom:14px">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#c0526a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            Search Live Listings &#8212; Pre-Filtered for Dr. Evans
+          </div>
+          <div id="boards-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:9px">
+
+            <a href="https://www.indeed.com/jobs?q=program+manager+%22public+health%22&l=Dallas%2C+TX&radius=50&explvl=senior_level" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;padding:11px 12px;border-radius:9px;text-decoration:none;background:#f0f5ff;border:1.5px solid rgba(37,87,167,0.22);font-family:-apple-system,BlinkMacSystemFont,sans-serif">
+              <span style="width:10px;height:10px;border-radius:50%;background:#2557a7;flex-shrink:0;display:block"></span>
+              <span style="display:flex;flex-direction:column;flex:1;min-width:0;overflow:hidden">
+                <span style="font-size:12px;font-weight:600;color:#1a0e14;display:block">Indeed</span>
+                <span style="font-size:9.5px;color:#9b7080;margin-top:1px;display:block">Dallas &middot; Senior PM + Health</span>
+              </span>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#9b7080" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+
+            <a href="https://www.linkedin.com/jobs/search/?keywords=program%20manager%20public%20health&location=Dallas%2C%20Texas%2C%20United%20States&f_TPR=r2592000" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;padding:11px 12px;border-radius:9px;text-decoration:none;background:#eef5ff;border:1.5px solid rgba(10,102,194,0.22);font-family:-apple-system,BlinkMacSystemFont,sans-serif">
+              <span style="width:10px;height:10px;border-radius:50%;background:#0a66c2;flex-shrink:0;display:block"></span>
+              <span style="display:flex;flex-direction:column;flex:1;min-width:0;overflow:hidden">
+                <span style="font-size:12px;font-weight:600;color:#1a0e14;display:block">LinkedIn Jobs</span>
+                <span style="font-size:9.5px;color:#9b7080;margin-top:1px;display:block">Dallas &middot; Past 30 days</span>
+              </span>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#9b7080" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+
+            <a href="https://www.idealist.org/en/jobs?q=program+manager+health&loc=Dallas%2C+TX&rad=50mi" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;padding:11px 12px;border-radius:9px;text-decoration:none;background:#fceef1;border:1.5px solid rgba(192,82,106,0.22);font-family:-apple-system,BlinkMacSystemFont,sans-serif">
+              <span style="width:10px;height:10px;border-radius:50%;background:#c0526a;flex-shrink:0;display:block"></span>
+              <span style="display:flex;flex-direction:column;flex:1;min-width:0;overflow:hidden">
+                <span style="font-size:12px;font-weight:600;color:#1a0e14;display:block">Idealist</span>
+                <span style="font-size:9.5px;color:#9b7080;margin-top:1px;display:block">Nonprofits &middot; 50mi Dallas</span>
+              </span>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#9b7080" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+
+            <a href="https://www.usajobs.gov/search/results/?k=public+health+program+manager&l=Texas&rad=50" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;padding:11px 12px;border-radius:9px;text-decoration:none;background:#f0fdf4;border:1.5px solid rgba(22,101,52,0.22);font-family:-apple-system,BlinkMacSystemFont,sans-serif">
+              <span style="width:10px;height:10px;border-radius:50%;background:#166534;flex-shrink:0;display:block"></span>
+              <span style="display:flex;flex-direction:column;flex:1;min-width:0;overflow:hidden">
+                <span style="font-size:12px;font-weight:600;color:#1a0e14;display:block">USAJobs</span>
+                <span style="font-size:9.5px;color:#9b7080;margin-top:1px;display:block">Federal &middot; Texas</span>
+              </span>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#9b7080" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+
+            <a href="https://careers.apha.org/jobs/?keywords=program+manager&location=Texas" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;padding:11px 12px;border-radius:9px;text-decoration:none;background:#e6f4f3;border:1.5px solid rgba(58,122,120,0.22);font-family:-apple-system,BlinkMacSystemFont,sans-serif">
+              <span style="width:10px;height:10px;border-radius:50%;background:#3a7a78;flex-shrink:0;display:block"></span>
+              <span style="display:flex;flex-direction:column;flex:1;min-width:0;overflow:hidden">
+                <span style="font-size:12px;font-weight:600;color:#1a0e14;display:block">APHA CareerMart</span>
+                <span style="font-size:9.5px;color:#9b7080;margin-top:1px;display:block">Public health specific</span>
+              </span>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#9b7080" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+
+            <a href="https://www.glassdoor.com/Job/dallas-public-health-jobs-SRCH_IL.0,6_IC1139977_KO7,20.htm" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;padding:11px 12px;border-radius:9px;text-decoration:none;background:#fdf3eb;border:1.5px solid rgba(201,138,90,0.22);font-family:-apple-system,BlinkMacSystemFont,sans-serif">
+              <span style="width:10px;height:10px;border-radius:50%;background:#c98a5a;flex-shrink:0;display:block"></span>
+              <span style="display:flex;flex-direction:column;flex:1;min-width:0;overflow:hidden">
+                <span style="font-size:12px;font-weight:600;color:#1a0e14;display:block">Glassdoor</span>
+                <span style="font-size:9.5px;color:#9b7080;margin-top:1px;display:block">Dallas &middot; With salaries</span>
+              </span>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#9b7080" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+
+            <a href="https://www.governmentjobs.com/careers/TXHHS?keywords=program+manager&category=Program+Management" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;padding:11px 12px;border-radius:9px;text-decoration:none;background:#f5eaf2;border:1.5px solid rgba(139,94,126,0.22);font-family:-apple-system,BlinkMacSystemFont,sans-serif">
+              <span style="width:10px;height:10px;border-radius:50%;background:#8b5e7e;flex-shrink:0;display:block"></span>
+              <span style="display:flex;flex-direction:column;flex:1;min-width:0;overflow:hidden">
+                <span style="font-size:12px;font-weight:600;color:#1a0e14;display:block">Texas HHS Jobs</span>
+                <span style="font-size:9.5px;color:#9b7080;margin-top:1px;display:block">State agency &middot; HHSC</span>
+              </span>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#9b7080" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+
+            <a href="https://www.ziprecruiter.com/candidate/search?search=program+manager+public+health&location=Dallas%2C+TX&radius=50" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;padding:11px 12px;border-radius:9px;text-decoration:none;background:#fff8e6;border:1.5px solid rgba(201,160,80,0.28);font-family:-apple-system,BlinkMacSystemFont,sans-serif">
+              <span style="width:10px;height:10px;border-radius:50%;background:#c98a5a;flex-shrink:0;display:block"></span>
+              <span style="display:flex;flex-direction:column;flex:1;min-width:0;overflow:hidden">
+                <span style="font-size:12px;font-weight:600;color:#1a0e14;display:block">ZipRecruiter</span>
+                <span style="font-size:9.5px;color:#9b7080;margin-top:1px;display:block">Dallas &middot; All health roles</span>
+              </span>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#9b7080" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+
+          </div>
+          <script>
+(function(){var g=document.getElementById('boards-grid');if(!g)return;function r(){var c=window.innerWidth<600?'1fr 1fr':window.innerWidth<900?'repeat(2,1fr)':'repeat(4,1fr)';g.style.gridTemplateColumns=c;}r();window.addEventListener('resize',r);})();
+          </script>
+        </div>
+
+
+        <div class="filter-bar">
+          <button class="fchip active" onclick="filterJobs('all',this)">All Roles</button>
+          <button class="fchip" onclick="filterJobs('consulting',this)">Consulting</button>
+          <button class="fchip" onclick="filterJobs('pm',this)">Program Mgmt</button>
+          <button class="fchip" onclick="filterJobs('ph',this)">Public Health</button>
+          <button class="fchip" onclick="filterJobs('nonprofit',this)">Nonprofit</button>
+          <button class="fchip" onclick="filterJobs('fed',this)">Federal</button>
+        </div>
+        <div id="jobs-out"></div>
+      </section>
+
+      <!-- TRACKER -->
+      <section id="v-tracker" class="view">
+        <div class="sec-hdr"><div><h2 class="sec-title">Application Tracker</h2><p class="sec-sub">Your full pipeline from saved to offer</p></div></div>
+        <div class="kpi-row">
+          <div class="kpi-card small"><div class="kn" id="tk-s">0</div><div class="kl">Saved</div></div>
+          <div class="kpi-card small"><div class="kn" id="tk-a">0</div><div class="kl">Applied</div></div>
+          <div class="kpi-card small shine"><div class="kn" id="tk-i">0</div><div class="kl">Interviews</div></div>
+          <div class="kpi-card small shine"><div class="kn" id="tk-o">0</div><div class="kl">Offers</div></div>
+        </div>
+        <div class="glass-card no-pad"><div id="tracker-body">
+          <div class="empty-state">
+            <div class="es-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c0526a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+            <div class="es-title">No applications yet</div>
+            <div class="es-sub">Save or apply to roles in Opportunities to start tracking.</div>
+            <button class="es-btn" onclick="navTo('jobs')">Browse Opportunities →</button>
+          </div>
+        </div></div>
+      </section>
+
+      <!-- PREP -->
+      <section id="v-prep" class="view">
+        <div class="sec-hdr"><div><h2 class="sec-title">Interview Preparation</h2><p class="sec-sub">Master your narrative for PM and consulting roles</p></div></div>
+        <div class="prep-banner">
+          <p class="pb-text">"Your 16 years aren't just experience — they're case studies. You don't need to invent stories; you need to tell the ones you already lived."</p>
+          <p class="pb-attr">Coaching note for Dr. Evans</p>
+        </div>
+        <div class="tab-row">
+          <button class="tab active" id="tab-beh" onclick="showPrep('beh')">Behavioral</button>
+          <button class="tab" id="tab-tech" onclick="showPrep('tech')">Technical</button>
+          <button class="tab" id="tab-case" onclick="showPrep('case')">Consulting Case</button>
+          <button class="tab" id="tab-stor" onclick="showPrep('stor')">Your Stories</button>
+          <button class="tab" id="tab-tips" onclick="showPrep('tips')">Day-of Tips</button>
+        </div>
+        <div id="prep-beh" class="prep-panel active">
+          <div class="prep-grid">
+            <div class="prep-card"><div class="pc-hd rose"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Leadership &amp; Influence</div>
+              <ol class="pq"><li>Tell me about a time you led a team through significant organizational change.</li><li>Describe influencing stakeholders who didn't report to you to achieve a program goal.</li><li>How have you built trust with federal program officers and community partners simultaneously?</li><li>Walk me through managing competing priorities across multiple federal grants at once.</li></ol></div>
+            <div class="prep-card"><div class="pc-hd gold"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Impact &amp; Results</div>
+              <ol class="pq"><li>What is your most impactful program? How do you define and measure success?</li><li>Describe turning around an underperforming program or contractor.</li><li>Give an example where your data analysis changed a programmatic decision.</li><li>How have you translated implementation science into on-the-ground improvements?</li></ol></div>
+            <div class="prep-card"><div class="pc-hd mauve"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Problem Solving</div>
+              <ol class="pq"><li>Describe the most complex compliance or corrective action challenge you've navigated.</li><li>Tell me about redesigning a program mid-implementation due to shifting requirements.</li><li>How do you build data systems from scratch for organizations with limited infrastructure?</li></ol></div>
+            <div class="prep-card"><div class="pc-hd teal"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>Values &amp; Motivation</div>
+              <ol class="pq"><li>What drives your commitment to health equity and disparities elimination?</li><li>How does your DHA research inform your program management approach?</li><li>Why are you moving toward consulting? What excites you about this transition?</li></ol></div>
+          </div>
+        </div>
+        <div id="prep-tech" class="prep-panel">
+          <div class="prep-grid">
+            <div class="prep-card"><div class="pc-hd rose"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Program Management</div>
+              <ol class="pq"><li>Walk through managing a federal grant from award through close-out. What checkpoints do you build?</li><li>How do you structure a logic model? Walk through one from a previous role.</li><li>What's your approach to performance monitoring plans and evaluations?</li><li>How do you prioritize deliverables when resource constraints emerge mid-year?</li></ol></div>
+            <div class="prep-card"><div class="pc-hd gold"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Data &amp; Analytics</div>
+              <ol class="pq"><li>Describe using REDCap or CDC SAMS for federal reporting. Biggest challenges?</li><li>How do you ensure data quality across multiple contractors submitting data?</li><li>Walk through building an executive dashboard — what do you prioritize and why?</li><li>How do you approach quantitative vs. qualitative data in program evaluation?</li></ol></div>
+          </div>
+        </div>
+        <div id="prep-case" class="prep-panel">
+          <div class="starC-box">
+            <div class="starC-title">The STAR-C Framework</div>
+            <div class="starC-steps">
+              <div class="scs"><span>S</span><em>Situation</em></div><div class="sca">→</div>
+              <div class="scs"><span>T</span><em>Task</em></div><div class="sca">→</div>
+              <div class="scs"><span>A</span><em>Approach</em></div><div class="sca">→</div>
+              <div class="scs"><span>R</span><em>Result</em></div><div class="sca">→</div>
+              <div class="scs accent"><span>C</span><em>Consulting Insight</em></div>
+            </div>
+            <p class="starC-sub">Always close with a long-term recommendation.</p>
+          </div>
+          <div class="case-list">
+            <div class="case-item"><span class="case-tag">Turnaround</span><div class="case-prompt">A federally-funded CHC is losing HRSA funding due to missed targets. Diagnose and create a 90-day turnaround plan.</div></div>
+            <div class="case-item"><span class="case-tag">Market Entry</span><div class="case-prompt">A national nonprofit wants to expand HIV prevention to three new Southern states. Structure the needs assessment and plan.</div></div>
+            <div class="case-item"><span class="case-tag">Process Improvement</span><div class="case-prompt">A state health department's STI surveillance data has 40% completeness. What's your diagnostic approach?</div></div>
+            <div class="case-item"><span class="case-tag">Org Design</span><div class="case-prompt">A mid-size health org wants to centralize grant management. What structure do you recommend and how do you build buy-in?</div></div>
+          </div>
+        </div>
+        <div id="prep-stor" class="prep-panel">
+          <p class="stories-intro">Practice each story until it flows naturally in 2–3 minutes. Drawn directly from your real career.</p>
+          <div class="story-list">
+            <div class="story-card"><div class="story-num">01</div><div class="story-body"><div class="story-title">The Data Infrastructure Build</div><div class="story-desc">Agency-wide systems across 10 grants and 8 databases. Design challenge, your decisions, measurable outcomes.</div><div class="story-tags"><span>Data Systems</span><span>Leadership</span><span>Scale</span></div></div></div>
+            <div class="story-card"><div class="story-num">02</div><div class="story-body"><div class="story-title">The EHE Statewide Initiative</div><div class="story-desc">Leading Louisiana's Ending the HIV Epidemic across two CDC Phase One jurisdictions. Scope, collaboration, national impact.</div><div class="story-tags"><span>Federal</span><span>Statewide</span><span>Impact</span></div></div></div>
+            <div class="story-card"><div class="story-num">03</div><div class="story-body"><div class="story-title">The $200K Contractor Portfolio</div><div class="story-desc">Managing 7 grantees, corrective action plans, improving compliance. A consulting gold-mine story — quantify before and after.</div><div class="story-tags"><span>Consulting</span><span>QI</span><span>Compliance</span></div></div></div>
+            <div class="story-card"><div class="story-num">04</div><div class="story-body"><div class="story-title">The Federal Funder Relationship</div><div class="story-desc">Navigating CDC, SAMHSA, and HRSA simultaneously. Trust-building and managing competing expectations at the federal level.</div><div class="story-tags"><span>Federal</span><span>Trust</span><span>Strategy</span></div></div></div>
+            <div class="story-card"><div class="story-num">05</div><div class="story-body"><div class="story-title">The DHA Journey</div><div class="story-desc">Pursuing a doctorate while working full-time. Why you did it, what it changed, and how your research vision connects to your next chapter.</div><div class="story-tags"><span>Credentials</span><span>Vision</span><span>Authentic</span></div></div></div>
+          </div>
+        </div>
+        <div id="prep-tips" class="prep-panel">
+          <div class="tips-grid">
+            <div class="tip-card"><div class="tip-icon rose"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c0526a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="tip-title">Lead with structure</div><div class="tip-body">"I'd approach this in three phases…" Open every answer and case with a clear framework before diving in.</div></div>
+            <div class="tip-card"><div class="tip-icon gold"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c98a5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><div class="tip-title">Quantify everything</div><div class="tip-body">$2M+, 8 databases, 7 contractors, 12 programs, $200K budgets. Numbers make your stories credible and memorable.</div></div>
+            <div class="tip-card"><div class="tip-icon mauve"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8b5e7e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="tip-title">Name your federal fluency</div><div class="tip-body">CDC, HRSA, SAMHSA experience is your differentiator. Name your agencies explicitly — don't assume they'll infer it.</div></div>
+            <div class="tip-card"><div class="tip-icon teal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3a7a78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="tip-title">Pause with confidence</div><div class="tip-body">Take 3–5 seconds before answering. Silence reads as thoughtfulness — it's one of the most underused consulting moves.</div></div>
+            <div class="tip-card"><div class="tip-icon rose"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c0526a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="tip-title">Close with insight</div><div class="tip-body">End every case with "Long-term, I'd recommend…" This separates a practitioner answer from a consultant answer.</div></div>
+            <div class="tip-card"><div class="tip-icon gold"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c98a5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg></div><div class="tip-title">Thank-you in 2 hrs</div><div class="tip-body">Reference something specific from your conversation. Personalized follow-ups reinforce your consulting communication style.</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GROWTH -->
+      <section id="v-growth" class="view">
+        <div class="sec-hdr"><div><h2 class="sec-title">Career Growth Roadmap</h2><p class="sec-sub">Program Manager → Healthcare Consulting Leader</p></div></div>
+        <div class="growth-banner"><p>"Dr. Evans — you are not starting from scratch. You are starting from experience, credentials, and a network most consultants spend a decade trying to build. <em>You already have them.</em>"</p></div>
+        <div class="roadmap">
+          <div class="rm-item"><div class="rm-line"><div class="rm-dot now"></div><div class="rm-track"></div></div><div class="rm-body"><div class="rm-period">Now — 6 Months</div><div class="rm-role">Bridge Role: Senior Program Manager or PM Consultant</div><div class="rm-desc">Target: Deloitte Health, Guidehouse, Booz Allen, CDC Foundation, NASTAD. Your launchpad into consulting while building your federal network.</div><div class="rm-tags"><span>Active search</span><span>LinkedIn optimization</span><span class="gold">Network activation</span></div></div></div>
+          <div class="rm-item"><div class="rm-line"><div class="rm-dot gd"></div><div class="rm-track"></div></div><div class="rm-body"><div class="rm-period">6 – 18 Months</div><div class="rm-role">Associate / Manager Consultant — Health &amp; Human Services</div><div class="rm-desc">Deepen your consulting toolkit. Pursue PMP. Begin thought leadership: LinkedIn, APHA, NASTAD conferences.</div><div class="rm-tags"><span>PMP certification</span><span>Proposal writing</span><span class="gold">Thought leadership</span></div></div></div>
+          <div class="rm-item"><div class="rm-line"><div class="rm-dot gd"></div><div class="rm-track"></div></div><div class="rm-body"><div class="rm-period">18 Months – 3 Years</div><div class="rm-role">Senior Consultant or Program Director — Strategic Level</div><div class="rm-desc">Lead client engagements independently. Develop specialty in health disparities, federal grant consulting, or STI/HIV program design.</div><div class="rm-tags"><span>Client portfolio</span><span class="gold">Specialty niche</span><span class="gold">Adjunct faculty</span></div></div></div>
+          <div class="rm-item"><div class="rm-line"><div class="rm-dot outline"></div></div><div class="rm-body"><div class="rm-period">3 – 5 Years</div><div class="rm-role">Principal Consultant, VP of Programs, or Independent Practice</div><div class="rm-desc">Own your consulting practice. A boutique firm specializing in sexual health, implementation science, and federal program optimization — <strong>a niche where you have no competition.</strong></div><div class="rm-tags"><span>Executive leadership</span><span class="gold">Own practice</span><span class="gold">National influence</span></div></div></div>
+        </div>
+        <div class="growth-grid">
+          <div class="glass-card"><div class="gc-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c0526a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>Certifications</div>
+            <div class="ri"><div class="rd rose"></div><div><div class="rn">PMP — Project Management Professional</div><div class="rs">PMI · Gold standard · ~$555 exam</div></div></div>
+            <div class="ri"><div class="rd rose"></div><div><div class="rn">Lean Six Sigma Green Belt</div><div class="rs">Complements your QI expertise</div></div></div>
+            <div class="ri"><div class="rd rose"></div><div><div class="rn">CHES — Health Education Specialist</div><div class="rs">NCHEC · Reinforces your MPH</div></div></div>
+            <div class="ri"><div class="rd rose"></div><div><div class="rn">FAR — Federal Acquisition Regulation</div><div class="rs">Essential for federal consulting firms</div></div></div>
+          </div>
+          <div class="glass-card"><div class="gc-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c0526a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>Target Organizations</div>
+            <div class="ri"><div class="rd gold"></div><div><div class="rn">Deloitte Government &amp; Public Services</div><div class="rs">Health consulting — CDC, HHS federal clients</div></div></div>
+            <div class="ri"><div class="rd gold"></div><div><div class="rn">Guidehouse (Health Segment)</div><div class="rs">Strong federal practice — HRSA/CDC fit</div></div></div>
+            <div class="ri"><div class="rd gold"></div><div><div class="rn">CDC Foundation</div><div class="rs">Mission-aligned, bridge role</div></div></div>
+            <div class="ri"><div class="rd gold"></div><div><div class="rn">ICF International / Booz Allen / Abt</div><div class="rs">Federal health consulting portfolio</div></div></div>
+            <div class="ri"><div class="rd gold"></div><div><div class="rn">NASTAD / NACCHO / ASTHO</div><div class="rs">National associations — PM &amp; consulting roles</div></div></div>
+          </div>
+          <div class="glass-card"><div class="gc-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c0526a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Community &amp; Networking</div>
+            <div class="ri"><div class="rd mauve"></div><div><div class="rn">APHA Annual Conference</div><div class="rs">Speaking, SIGs, national visibility</div></div></div>
+            <div class="ri"><div class="rd mauve"></div><div><div class="rn">Black Women in Public Health</div><div class="rs">Mentorship, job board, community</div></div></div>
+            <div class="ri"><div class="rd mauve"></div><div><div class="rn">CIRA Yale Network</div><div class="rs">Already in — leverage for referrals</div></div></div>
+            <div class="ri"><div class="rd mauve"></div><div><div class="rn">Junior League of Dallas</div><div class="rs">Local leadership credentialing</div></div></div>
+          </div>
+          <div class="glass-card"><div class="gc-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c0526a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>Thought Leadership</div>
+            <div class="ri"><div class="rd teal"></div><div><div class="rn">Publish your DHA research</div><div class="rs">AJPH, Health Equity Journal, JPHMP</div></div></div>
+            <div class="ri"><div class="rd teal"></div><div><div class="rn">LinkedIn content 3x/month</div><div class="rs">Implementation science, PM tips, equity</div></div></div>
+            <div class="ri"><div class="rd teal"></div><div><div class="rn">Conference speaking</div><div class="rs">APHA 2026, NASTAD Summit, Ryan White</div></div></div>
+            <div class="ri"><div class="rd teal"></div><div><div class="rn">Substack or guest blog</div><div class="rs">Build brand before launching practice</div></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LINKEDIN -->
+      <section id="v-linkedin" class="view">
+        <div class="sec-hdr"><div><h2 class="sec-title">LinkedIn Optimization</h2><p class="sec-sub">Position yourself as a healthcare consulting thought leader</p></div></div>
+        <div class="li-comps">
+          <div class="li-comp"><div class="li-lbl">Headline</div><div class="cmp-cols"><div class="cmp-col before"><div class="ctag bad">Current</div><p class="cmp-txt">Public Health Practitioner | Program Manager</p></div><div class="cmp-arrow">→</div><div class="cmp-col after"><div class="ctag good">Recommended</div><p class="cmp-txt">Healthcare Program Leader &amp; Consultant · DHA · Federal Grant Management · Eliminating Health Disparities Through Implementation Science</p></div></div></div>
+          <div class="li-comp"><div class="li-lbl">About Section</div><div class="cmp-cols"><div class="cmp-col before"><div class="ctag bad">Missing</div><p class="cmp-txt">Generic summary that doesn't convey executive presence or consulting positioning.</p></div><div class="cmp-arrow">→</div><div class="cmp-col after"><div class="ctag good">Recommended</div><p class="cmp-txt">I help health organizations build programs that actually work — and prove it with data. As a doctoral-prepared leader with 16+ years directing $2M+ in federal grants across CDC, HRSA, SAMHSA, and Gilead Sciences...</p></div></div></div>
+        </div>
+        <div class="skills-sec"><div class="skills-title">Priority Skills to Add</div><div class="skills-cloud"><span class="sk rose">Program Management</span><span class="sk rose">Healthcare Consulting</span><span class="sk rose">Federal Grant Management</span><span class="sk rose">Implementation Science</span><span class="sk mauve">Quality Improvement</span><span class="sk mauve">Health Equity</span><span class="sk mauve">Stakeholder Engagement</span><span class="sk gold">Strategic Planning</span><span class="sk gold">Data Governance</span><span class="sk gold">Performance Management</span><span class="sk teal">Corrective Action Planning</span><span class="sk teal">Public Health Policy</span></div></div>
+        <div class="checklist-wrap"><div class="checklist-title">Action Checklist</div><div class="checklist-grid">
+          <label class="chk-item"><input type="checkbox" onchange="updateProgress()"><span class="chkmark"></span><span>Add CIRA Yale as an Experience entry — signals research credibility</span></label>
+          <label class="chk-item"><input type="checkbox" onchange="updateProgress()"><span class="chkmark"></span><span>Set "Open to Work" for Program Management / Healthcare Consulting</span></label>
+          <label class="chk-item"><input type="checkbox" onchange="updateProgress()"><span class="chkmark"></span><span>Request recommendations from federal program officers at CDC/HRSA</span></label>
+          <label class="chk-item"><input type="checkbox" onchange="updateProgress()"><span class="chkmark"></span><span>Add DHA credential to your display name field</span></label>
+          <label class="chk-item"><input type="checkbox" onchange="updateProgress()"><span class="chkmark"></span><span>Feature your updated resume PDF in the Featured section</span></label>
+          <label class="chk-item"><input type="checkbox" onchange="updateProgress()"><span class="chkmark"></span><span>Post 3x/month on implementation science or health equity topics</span></label>
+        </div>
+        <div class="prog-wrap"><div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div><div class="prog-lbl"><span id="prog-count">0</span> of 6 complete</div></div></div>
+
+        <!-- LINKEDIN POST CREATOR — all hex values, no CSS var() -->
+        <div style="background:#ffffff;border:1px solid rgba(192,82,106,0.15);border-radius:15px;padding:20px;margin-top:14px;box-shadow:0 2px 12px rgba(192,82,106,0.08)">
+
+          <!-- Header -->
+          <div style="display:flex;align-items:center;gap:13px;margin-bottom:18px;padding-bottom:15px;border-bottom:1px solid rgba(192,82,106,0.13)">
+            <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#2d1b2e,#3d1830);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0d8e0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </div>
+            <div>
+              <div style="font-size:15px;font-weight:700;color:#1a0e14;font-family:Georgia,serif">LinkedIn Post Creator</div>
+              <div style="font-size:11.5px;color:#9b7080;margin-top:3px;font-family:-apple-system,sans-serif">AI-drafted posts from your real experience — copy and publish in 2 clicks</div>
+            </div>
+          </div>
+
+          <!-- Topic label -->
+          <div style="font-size:10.5px;font-weight:600;color:#6b4456;text-transform:uppercase;letter-spacing:0.09em;margin-bottom:10px;font-family:-apple-system,sans-serif">Choose a topic</div>
+
+          <!-- Topic chips -->
+          <div id="li-topics" style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px">
+            <button onclick="selectTopic(this,'implementation-science')" style="padding:6px 14px;border-radius:20px;border:1.5px solid rgba(192,82,106,0.22);background:#ffffff;color:#6b4456;font-size:11px;font-weight:500;cursor:pointer;font-family:-apple-system,sans-serif;-webkit-tap-highlight-color:transparent">Implementation Science</button>
+            <button onclick="selectTopic(this,'federal-grants')" style="padding:6px 14px;border-radius:20px;border:1.5px solid rgba(192,82,106,0.22);background:#ffffff;color:#6b4456;font-size:11px;font-weight:500;cursor:pointer;font-family:-apple-system,sans-serif;-webkit-tap-highlight-color:transparent">Federal Grant Lessons</button>
+            <button onclick="selectTopic(this,'health-equity')" style="padding:6px 14px;border-radius:20px;border:1.5px solid rgba(192,82,106,0.22);background:#ffffff;color:#6b4456;font-size:11px;font-weight:500;cursor:pointer;font-family:-apple-system,sans-serif;-webkit-tap-highlight-color:transparent">Health Equity</button>
+            <button onclick="selectTopic(this,'career-pivot')" style="padding:6px 14px;border-radius:20px;border:1.5px solid rgba(192,82,106,0.22);background:#ffffff;color:#6b4456;font-size:11px;font-weight:500;cursor:pointer;font-family:-apple-system,sans-serif;-webkit-tap-highlight-color:transparent">My Consulting Pivot</button>
+            <button onclick="selectTopic(this,'data-systems')" style="padding:6px 14px;border-radius:20px;border:1.5px solid rgba(192,82,106,0.22);background:#ffffff;color:#6b4456;font-size:11px;font-weight:500;cursor:pointer;font-family:-apple-system,sans-serif;-webkit-tap-highlight-color:transparent">Data &amp; QI</button>
+            <button onclick="selectTopic(this,'ehe-lessons')" style="padding:6px 14px;border-radius:20px;border:1.5px solid rgba(192,82,106,0.22);background:#ffffff;color:#6b4456;font-size:11px;font-weight:500;cursor:pointer;font-family:-apple-system,sans-serif;-webkit-tap-highlight-color:transparent">EHE Initiative</button>
+            <button onclick="selectTopic(this,'dha-journey')" style="padding:6px 14px;border-radius:20px;border:1.5px solid rgba(192,82,106,0.22);background:#ffffff;color:#6b4456;font-size:11px;font-weight:500;cursor:pointer;font-family:-apple-system,sans-serif;-webkit-tap-highlight-color:transparent">My DHA Journey</button>
+            <button onclick="selectTopic(this,'contractor-management')" style="padding:6px 14px;border-radius:20px;border:1.5px solid rgba(192,82,106,0.22);background:#ffffff;color:#6b4456;font-size:11px;font-weight:500;cursor:pointer;font-family:-apple-system,sans-serif;-webkit-tap-highlight-color:transparent">Managing Contractors</button>
+          </div>
+
+          <!-- Custom prompt -->
+          <div style="margin-bottom:14px">
+            <div style="font-size:10.5px;font-weight:600;color:#6b4456;text-transform:uppercase;letter-spacing:0.09em;margin-bottom:8px;font-family:-apple-system,sans-serif">Or describe your own topic</div>
+            <textarea id="li-custom-prompt" rows="2"
+              style="width:100%;border:1.5px solid rgba(192,82,106,0.22);border-radius:9px;padding:10px 13px;font-family:-apple-system,sans-serif;font-size:12px;color:#1a0e14;line-height:1.55;background:#fdf5f7;resize:none;outline:none;box-sizing:border-box;display:block"
+              onfocus="this.style.borderColor='#c0526a'" onblur="this.style.borderColor='rgba(192,82,106,0.22)'"
+              placeholder="e.g. 'What managing 7 contractors across $200K in federal budgets taught me about accountability'..."></textarea>
+          </div>
+
+          <!-- Tone row -->
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:16px">
+            <div style="font-size:10.5px;font-weight:600;color:#6b4456;text-transform:uppercase;letter-spacing:0.09em;white-space:nowrap;font-family:-apple-system,sans-serif">Tone:</div>
+            <button id="tone-thought" onclick="selectTone(this,'thought-leader')" style="padding:5px 14px;border-radius:20px;border:1.5px solid #c0526a;background:#fceef1;color:#8c3347;font-size:11px;font-weight:500;cursor:pointer;font-family:-apple-system,sans-serif">Thought Leader</button>
+            <button id="tone-story" onclick="selectTone(this,'storytelling')" style="padding:5px 14px;border-radius:20px;border:1.5px solid rgba(192,82,106,0.22);background:#ffffff;color:#6b4456;font-size:11px;font-weight:500;cursor:pointer;font-family:-apple-system,sans-serif">Personal Story</button>
+            <button id="tone-practical" onclick="selectTone(this,'practical-tips')" style="padding:5px 14px;border-radius:20px;border:1.5px solid rgba(192,82,106,0.22);background:#ffffff;color:#6b4456;font-size:11px;font-weight:500;cursor:pointer;font-family:-apple-system,sans-serif">Practical Tips</button>
+          </div>
+
+          <!-- Generate button -->
+          <button id="li-generate-btn" onclick="generatePost()"
+            style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:linear-gradient(135deg,#c0526a,#d4687e);color:#ffffff;border:none;border-radius:10px;padding:13px 20px;font-size:13px;font-weight:600;cursor:pointer;font-family:-apple-system,sans-serif;box-shadow:0 4px 14px rgba(192,82,106,0.3);box-sizing:border-box">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            <span id="li-gen-label">Generate LinkedIn Post</span>
+          </button>
+
+          <!-- Output — hidden until generated -->
+          <div id="li-post-output" style="display:none;margin-top:20px;padding-top:17px;border-top:1px solid rgba(192,82,106,0.13)">
+
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+              <div style="font-size:11px;font-weight:600;color:#1a0e14;text-transform:uppercase;letter-spacing:0.07em;font-family:-apple-system,sans-serif">Your Draft Post</div>
+              <div style="font-size:11px;color:#9b7080;font-family:-apple-system,sans-serif"><span id="li-char-num" style="font-weight:700;color:#3a7a78">0</span> / 3,000 chars</div>
+            </div>
+
+            <textarea id="li-post-text" rows="11" oninput="updateCharCount()"
+              style="width:100%;border:1.5px solid rgba(192,82,106,0.22);border-radius:10px;padding:14px 16px;font-family:-apple-system,sans-serif;font-size:12.5px;color:#1a0e14;line-height:1.75;background:#fdf5f7;resize:vertical;min-height:220px;outline:none;box-sizing:border-box;margin-bottom:13px;display:block"
+              onfocus="this.style.borderColor='#c0526a'" onblur="this.style.borderColor='rgba(192,82,106,0.22)'"
+              placeholder="Your post will appear here..."></textarea>
+
+            <!-- Action buttons -->
+            <div style="display:flex;gap:9px;flex-wrap:wrap;margin-bottom:12px">
+
+              <button id="li-copy-btn" onclick="copyPost()"
+                style="display:inline-flex;align-items:center;gap:6px;background:#fceef1;color:#8c3347;border:1.5px solid rgba(192,82,106,0.28);border-radius:8px;padding:10px 16px;font-size:12px;font-weight:600;cursor:pointer;font-family:-apple-system,sans-serif">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                Copy Post
+              </button>
+
+              <button onclick="openLinkedIn()"
+                style="display:inline-flex;align-items:center;gap:7px;flex:1;justify-content:center;background:linear-gradient(135deg,#2d1b2e,#3d1830);color:#f0d8e0;border:none;border-radius:8px;padding:10px 16px;font-size:12px;font-weight:600;cursor:pointer;font-family:-apple-system,sans-serif;box-shadow:0 3px 10px rgba(45,27,46,0.28)">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                Copy &amp; Open LinkedIn &#8599;
+              </button>
+
+              <button onclick="generatePost()"
+                style="display:inline-flex;align-items:center;gap:6px;background:transparent;color:#9b7080;border:1.5px solid rgba(192,82,106,0.2);border-radius:8px;padding:10px 14px;font-size:12px;font-weight:500;cursor:pointer;font-family:-apple-system,sans-serif">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.38"/></svg>
+                Try Again
+              </button>
+
+            </div>
+
+            <div style="font-size:11px;color:#6b4456;line-height:1.6;padding:10px 13px;background:#fdf3eb;border-radius:8px;border:1px solid rgba(201,138,90,0.22);font-family:-apple-system,sans-serif">
+              <strong style="color:#8a5c30">&#9998; Tip:</strong> Edit the post directly above before copying. Personalizing the opening line with something specific to your week increases engagement significantly.
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <button class="bn active" id="bnav-home" onclick="navTo('home')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></button>
+    <button class="bn" id="bnav-jobs" onclick="navTo('jobs')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span>Jobs</span></button>
+    <button class="bn" id="bnav-tracker" onclick="navTo('tracker')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>Tracker</span></button>
+    <button class="bn" id="bnav-prep" onclick="navTo('prep')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg><span>Prep</span></button>
+    <button class="bn" id="bnav-growth" onclick="navTo('growth')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg><span>Growth</span></button>
+    <button class="bn" id="bnav-linkedin" onclick="navTo('linkedin')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg><span>LinkedIn</span></button>
+  </nav>
+
+</div>
+
+<!-- MESSAGE HIRING MANAGER MODAL -->
+<div class="modal-overlay" id="msg-modal">
+  <div class="modal-box msg-modal-box">
+    <button class="modal-x" onclick="closeMsgModal()">×</button>
+    <div class="msg-modal-header">
+      <div class="msg-modal-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c0526a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      </div>
+      <div>
+        <h3 id="msg-modal-title">Message Hiring Manager</h3>
+        <p id="msg-modal-role" class="msg-modal-sub"></p>
+      </div>
+    </div>
+
+    <div class="msg-instructions">
+      <strong>How to use:</strong> Copy the message below, then click "Find Hiring Manager on LinkedIn" to find a recruiter or talent acquisition contact at this organization. Paste the message into LinkedIn and personalize the <strong>[Name]</strong> field before sending.
+    </div>
+
+    <textarea id="msg-textarea" class="msg-textarea" rows="12" spellcheck="true"></textarea>
+
+    <div class="msg-actions">
+      <button id="copy-btn" class="mbtn-copy" onclick="copyMsg()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+        Copy Message
+      </button>
+      <a id="msg-li-btn" class="mbtn-linkedin" href="#" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        Find Hiring Manager on LinkedIn ↗
+      </a>
+      <button class="mbtn-cancel" onclick="closeMsgModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<div class="sb-overlay" id="sb-overlay" onclick="toggleSidebar()"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
